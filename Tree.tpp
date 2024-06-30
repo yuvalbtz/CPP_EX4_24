@@ -4,11 +4,15 @@
 #include <queue>
 #include <vector>
 
+
+using namespace std;
+
+
 // Constructor with default arity
 template <typename T, size_t k>
 Tree<T, k>::Tree() : root(nullptr) {
   if (k <= 0) {
-    throw std::runtime_error("Arity of the tree must be greater than 0");
+    throw runtime_error("Arity of the tree must be greater than 0");
   }
 }
 
@@ -49,7 +53,7 @@ bool Tree<T, k>::add_sub_node(Node<T> &parent_node, Node<T> &sub_node) {
     }
   }
   // Failed to add sub-node
-  throw std::runtime_error("Failed to add sub-node!");
+  throw runtime_error("Failed to add sub-node!");
 }
 
 // Find a node by value
@@ -150,7 +154,7 @@ MinHeapIterator<T, k> Tree<T, k>::begin_min_heap() {
   if (k == 2)
     return MinHeapIterator<T, k>(root);
   else
-    throw std::runtime_error("The tree isn't binary tree!");
+    throw runtime_error("The tree isn't binary tree!");
 }
 
 // End Min-Heap traversal
@@ -159,22 +163,22 @@ MinHeapIterator<T, k> Tree<T, k>::end_min_heap() {
   if (k == 2)
     return MinHeapIterator<T, k>(nullptr); // End iterator
   else
-    throw std::runtime_error("The tree isn't binary tree!");
+    throw runtime_error("The tree isn't binary tree!");
 }
 
 /// Convert the tree to a min-heap and return an iterator
 template <typename T, size_t k>
 MinHeapIterator<T, k> Tree<T, k>::myHeap() {
   if (k != 2) {
-    throw std::runtime_error("The tree isn't a binary tree!");
+    throw runtime_error("The tree isn't a binary tree!");
   }
 
   // Helper function to heapify the tree
   auto heapify = [](Node<T>* node) {
     if (!node) return;
     
-    std::vector<Node<T>*> nodes;
-    std::queue<Node<T>*> q;
+    vector<Node<T>*> nodes;
+    queue<Node<T>*> q;
     q.push(node);
     
     while (!q.empty()) {
@@ -189,7 +193,7 @@ MinHeapIterator<T, k> Tree<T, k>::myHeap() {
     }
 
     // Sort nodes based on their values
-    std::sort(nodes.begin(), nodes.end(), [](Node<T>* a, Node<T>* b) {
+    sort(nodes.begin(), nodes.end(), [](Node<T>* a, Node<T>* b) {
       return a->get_value() < b->get_value();
     });
 
@@ -223,12 +227,12 @@ void Tree<T, k>::printTree() {
     // Load the font
     sf::Font font;
     if (!font.loadFromFile("font/Roboto-Regular.ttf")) {
-        std::cerr << "Error loading font\n";
+        cerr << "Error loading font\n";
         return;
     }
 
     // Function to recursively draw the nodes
-    std::function<void(Node<T>*, float, float, float)> drawNode =
+    function<void(Node<T>*, float, float, float)> drawNode =
         [&](Node<T>* node, float x, float y, float xOffset) {
             if (!node) return;
 
@@ -260,7 +264,7 @@ void Tree<T, k>::printTree() {
             window.draw(circle);
 
             // Draw the node's value
-            std::string to_draw = to_string(node->get_value());
+            string to_draw = to_string(node->get_value());
             sf::Text text(to_draw, font, 20);
             text.setFillColor(sf::Color::Black); // Black text color
             // Center the text in the circle

@@ -4,10 +4,9 @@
 #include "Node.hpp"
 #include <stack>
 
-using namespace std;
 
 /**
- * PostOrderIterator manner:
+ * InOrderIterator manner:
  *  
  * left -> value -> right  
  */    
@@ -15,7 +14,7 @@ using namespace std;
 template<typename T, size_t k = 2>
 class InOrderIterator : public BaseIterator<T> {
 private:
-    stack<Node<T> *> stack;  // Stack to manage the nodes for traversal
+    std::stack<Node<T> *> stack;  // Stack to manage the nodes for traversal
 
     // Push all left children of a node onto the stack
     void pushLeftChildren(Node<T> *node) {

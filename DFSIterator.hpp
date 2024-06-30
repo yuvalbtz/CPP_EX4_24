@@ -5,13 +5,10 @@
 #include "BaseIterator.hpp"
 #include "Node.hpp"
 
-using namespace std;
-
 template<typename T, size_t k = 2>
 class DFSIterator : public BaseIterator<T> {
 private:
-    stack<Node<T>*> stack;
-
+    std::stack<Node<T>*> stack;
 public:
     explicit DFSIterator(Node<T>* root) {
         if (root) {

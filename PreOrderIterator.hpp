@@ -5,10 +5,9 @@
 #include "BaseIterator.hpp"
 #include "Node.hpp"
 
-using namespace std;
 
 /**
- * PostOrderIterator manner:
+ * PreOrderIterator manner:
  *  
  * value ->  left -> right  
  */    
@@ -18,7 +17,7 @@ using namespace std;
 template<typename T, size_t k>
 class PreOrderIterator : public BaseIterator<T> {
 private:
-    stack<Node<T>*> stack;
+    std::stack<Node<T>*> stack;
 
 public:
    explicit PreOrderIterator(Node<T>* root) {

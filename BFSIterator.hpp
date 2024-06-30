@@ -5,12 +5,11 @@
 #include "BaseIterator.hpp"
 #include <queue>
 
-using namespace std;
 
 template<typename T, size_t k = 2>
 class BFSIterator : public BaseIterator<T> {
 private:
-    queue<Node<T>*> queue;
+    std::queue<Node<T>*> queue;
 
 public:
     explicit BFSIterator(Node<T>* root) {
