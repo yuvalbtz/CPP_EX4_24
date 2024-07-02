@@ -26,7 +26,13 @@ HEADERS=Node.hpp \
 
 TEMPLATES=Node.tpp \
           Tree.tpp \
-          MinHeapIterator.tpp
+          MinHeapIterator.tpp \
+          PreOrderIterator.tpp \
+          PostOrderIterator.tpp \
+          InOrderIterator.tpp \
+          BFSIterator.tpp \
+          DFSIterator.tpp \
+
 
 tree: $(DEMO_OBJECTS) $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $(DEMO_OBJECTS) $(OBJECTS) -o tree $(LDFLAGS)

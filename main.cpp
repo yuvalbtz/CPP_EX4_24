@@ -140,6 +140,18 @@ int main() {
     three_ary_tree_strings.printTree();
 
 
+    for (auto node = three_ary_tree_strings.begin_bfs_scan(); node != three_ary_tree_strings.end_bfs_scan(); ++node)
+    {
+         cout << node->get_value() <<", ";
+    } // prints: THIS, IS, HOW, WE, DO, IT, !!!!,
+     cout<<""<<endl;
+
+    for (auto node : three_ary_tree_strings)
+    {
+        cout << node->get_value() <<", ";
+    } // same as BFS: THIS, IS, HOW, WE, DO, IT, !!!!,
+    cout<<""<<endl;
+
 
 
     Node<int> root_int(1);
@@ -149,13 +161,13 @@ int main() {
     Node<int> n4_int(5);
     Node<int> n5_int(6);
 
-    Tree<int> three_ary_tree_ints; // 2-ary tree.
-    three_ary_tree_ints.add_root(root_int);
-    three_ary_tree_ints.add_sub_node(root_int, n1_int);
-    three_ary_tree_ints.add_sub_node(root_int, n2_int);
-    three_ary_tree_ints.add_sub_node(n2_int, n3_int);
-    three_ary_tree_ints.add_sub_node(n2_int, n4_int);
-    three_ary_tree_ints.add_sub_node(n3_int, n5_int);
+    Tree<int> binary_tree_ints; // 2-ary tree.
+    binary_tree_ints.add_root(root_int);
+    binary_tree_ints.add_sub_node(root_int, n1_int);
+    binary_tree_ints.add_sub_node(root_int, n2_int);
+    binary_tree_ints.add_sub_node(n2_int, n3_int);
+    binary_tree_ints.add_sub_node(n2_int, n4_int);
+    binary_tree_ints.add_sub_node(n3_int, n5_int);
     /**
      *       root = 1
      *            /   \    
@@ -165,10 +177,10 @@ int main() {
      *                      \
      *                       6 
      */
-    three_ary_tree_ints.printTree();
+    binary_tree_ints.printTree();
 
     
-    three_ary_tree_ints.myHeap();
+    binary_tree_ints.myHeap();
     /**
      *        root = 1
      *            /     \    
@@ -177,8 +189,40 @@ int main() {
      *        4     5  6                
      */
    
-    three_ary_tree_ints.printTree();
+    binary_tree_ints.printTree();
 
+
+cout<<"------------------------"<<endl;
+
+for (auto node = binary_tree_ints.begin_pre_order(); node != binary_tree_ints.end_pre_order(); ++node)
+    {
+        cout << node->get_value() <<", ";
+    } // prints: 1, 2, 4, 5, 3, 6,
+     cout<<""<<endl;
+
+    for (auto node = binary_tree_ints.begin_post_order(); node != binary_tree_ints.end_post_order(); ++node)
+    {
+        cout << node->get_value() <<", ";
+    } // prints: 4, 5, 2, 6, 3, 1, 
+     cout<<""<<endl;
+
+    for (auto node = binary_tree_ints.begin_in_order(); node != binary_tree_ints.end_in_order(); ++node)
+    {
+         cout << node->get_value() <<", ";
+    } // prints: 4, 2, 5, 1, 6, 3,
+     cout<<""<<endl;
+
+    for (auto node = binary_tree_ints.begin_bfs_scan(); node != binary_tree_ints.end_bfs_scan(); ++node)
+    {
+         cout << node->get_value() <<", ";
+    } // prints: 1, 2, 3, 4, 5, 6,
+     cout<<""<<endl;
+
+    for (auto node : binary_tree_ints)
+    {
+        cout << node->get_value() <<", ";
+    } // same as BFS: 1, 2, 3, 4, 5, 6,
+    cout<<""<<endl;
 
 
 
